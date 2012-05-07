@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="FrankSoong" date="1336386376" format="1.1" reprev="1.2" version="1.2"}%
+---+ !Open Library Plugin
+
+I do nothing
+
+---++ Syntax Rules
+
+I have no syntax
+
+---++ Settings
+
+   * Set SHORTDESCRIPTION = A really dumb plugin
+   * Set SHORTDESCRIPTIO = pppppppppppppppppp
+   * Set GREETING = qqqqqqqqqqqqqq
+
+---++ Plugin Info
+
+|  Plugin Author: | TWiki:Main.FrankSoong |
+|  Copyright: | ? 2012, Frank Soong |
+|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
+|  Plugin Version: | 07 May 2012 |
+|  Change History: | <!-- versions below in reverse order --> |
+|  07 May 2012: | Initial version |
+|  TWiki Dependency: | $TWiki::Plugins::VERSION 1.1 |
+|  CPAN Dependencies: | none |
+|  Other Dependencies: | none |
+|  Perl Version: | 5.006 |
+|  TWiki:Plugins/Benchmark: | %TWIKIWEB%.GoodStyle N/A, %TWIKIWEB%.FormattedSearch N/A, %TOPIC% N/A |
+|  Plugin Home: | http://TWiki.org/cgi-bin/view/Plugins/%TOPIC% |
+|  Feedback: | http://TWiki.org/cgi-bin/view/Plugins/%TOPIC%Dev |
+|  Appraisal: | http://TWiki.org/cgi-bin/view/Plugins/%TOPIC%Appraisal |
+
+__Related Topics:__ %TWIKIWEB%.TWikiPlugins, %TWIKIWEB%.DeveloperDocumentationCategory, %TWIKIWEB%.AdminDocumentationCategory, %TWIKIWEB%.TWikiPreferences
