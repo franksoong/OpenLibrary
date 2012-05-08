@@ -1,0 +1,171 @@
+For CentOS
+
+Installing Apache2 With PHP5 And MySQL Support On CentOS 5.3 (LAMP) 
+http://www.howtoforge.com/installing-apache2-with-php5-and-mysql-support-on-centos-5.3-lamp
+
+chkconfig --levels 235 mysqld on
+/etc/init.d/mysqld start
+yum install mysql mysql-server
+
+mysqladmin -u root password yourrootsqlpassword
+mysqladmin -h server1.example.com -u root password yourrootsqlpassword
+
+yum install httpd
+chkconfig --levels 235 httpd on
+/etc/init.d/httpd start
+
+ssyum install php
+/etc/init.d/httpd start
+/etc/init.d/httpd restart 
+
+
+
+
+
+
+
+
+http://twiki.org/cgi-bin/view/TWiki/HowToMakeSimpleTWikiPlugin
+http://twiki.org/cgi-bin/view/TWiki/TWikiFuncDotPm
+
+
+http://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-apache-startstop.html
+
+http://twiki.org/cgi-bin/view/TWiki/TWikiPlugins
+
+http://www.twiki.org/cgi-bin/view/TWiki/TWikiInstallationGuide#Basic_Installation
+
+chmod -R 770 twiki5
+chown -R apache:apache twiki5
+
+
+/var/www/twiki5/data/debug.txt
+/var/www/twiki5/data/warn%DATE%.txt
+/var/log/httpd/error_log
+
+
+apachectl start
+apachectl stop
+apachectl status
+
+
+/sbin/service httpd restart
+
+
+HelloWorldPlugin
+
+
+<script type="text/javascript" src="%PUBURL%/%SYSTEMWEB%/BehaviourContrib/behaviour.js"></script>
+
+
+
+I found the problem. Indeed it was about selinux (Security Enhanced Linux).
+To temporary disable selinux, login as root and type the following command: 
+
+echo 0 >/selinux/enforce 
+
+http://localhost/twiki/bin/configures
+
+http://twiki.org/cgi-bin/view/Plugins/BlogAddOn
+http://twiki.org/cgi-bin/view/Plugins/BlogPlugin
+http://twiki.org/cgi-bin/view/Plugins/XmlXslPlugin
+http://twiki.org/cgi-bin/view/Plugins/AutoCompletePlugin
+http://twiki.org/cgi-bin/view/Plugins/BeautifierPlugin
+http://twiki.org/cgi-bin/view/Plugins/BreadCrumbsPlugin
+http://twiki.org/cgi-bin/view/Plugins/BrowserBoosterPlugin
+http://twiki.org/cgi-bin/view/Plugins/CopyrightPlugin
+http://twiki.org/cgi-bin/view/Plugins/CopyMsOfficeTableAddOn
+http://twiki.org/cgi-bin/view/Plugins/CortadoPlugin
+http://twiki.org/cgi-bin/view/Plugins/DBCachePlugin
+http://twiki.org/cgi-bin/view/Plugins/GluePlugin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------
+更新系统内核到最新.
+[root@linuxfei ~]#yum -y update
+
+/安装mysql扩展
+[root@linuxfei ~]#yum -y install mysql-connector-odbc mysql-devel libdbi-dbd-mysql
+//安装php的扩展
+[root@linuxfei ~]# yum -y install php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc
+//安装apache扩展
+[root@linuxfei ~]#yum -y install httpd-manual mod_ssl mod_perl mod_auth_mysql
+一次性粘贴安装:
+[root@linuxfei ~]# yum -y install httpd php mysql mysql-server php-mysql httpd-manual mod_ssl mod_perl mod_auth_mysql php-mcrypt php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc mysql-connector-odbc mysql-devel libdbi-dbd-mysql 
+
+
+/var/www/html/phpMyAdmin/config.inc.php
+
+apache配置
+
+/etc/httpd/conf/httpd.conf
+最主要的配置文件，不过很多其他的distribution都将这个文件拆成数个小文件，分别管理不同的参数。但是最主要配置文件还是以这个文件名为主。
+/etc/httpd/conf.d/*.conf
+这个事CentOS的特色之一，如果你不想修改原始配置文件httpd.conf的话，那么可以将你自己的额外参数独立出来，而启动apache时，这个文件就会被读入到主要配置文件。
+/usr/lib/httpd/modules
+apache支持很多的模块，所以您想要使用的模块默认都放置在此目录
+/var/www/html
+这里是CentOS默认的“首页”所在目录。
+/var/www/error
+如果因为主机设置错误，或者是浏览器端要求的数据错误，在浏览器上出现的错误信息就已这个目录的默认信息为主。
+/var/www/icons
+提供apache的一些小图标
+/var/www/cgi-bin
+默认给一些可执行的CGI程序放置的目录
+/var/log/httpd
+默认apache的日志文件都放在这里，对于流量大的网站来说，这个目录要很小心，因为这个文件很容易变的很大，您需要足够的空间哦
+/usr/sbin/apachectl
+这是Apache的主要执行文件，这个执行文件其实是shell script,它可以主动检测系统上的一些设置值，好让您启动Apache时更简单
+/usr/sbin/httpd
+这是主要的apache的二进制文件
+/usr/bin/htpasswd
+当您想登陆某些网页时，需要输入账号与密码。那么Apache本身就提供一个最基本的密码保护方式。该密码的产生就是通过这个命令实现的
+
+
+至于MySQL方面，您需要知道的几个重要目录与文件有以下几个：
+/etc/my.cnf:这是Mysql的配置文件，包括您想要进行mysql数据库的最佳化，或者是正对mysql进行一些额外的参数指定，都可以在这个文件里实现
+/usr/lib/mysql:这个目录是MySQL数据库放置的位置，当启动任何MySQL的服务器时，请务必记得在备份时，将此目录完整的备份下来。
+
+
+另外，在PHP方面，应该了解以下几个文件。
+/usr/lib/httpd/modules/libphp4.so:PHP提供给apache使用的模块，这个关系我们能否在apache网页上面设计php程序语言的最重要文件
+/etc/httpd/conf.d/php.conf:你要不要手动将该模块写入Httpd.conf中呢？不需要，因为系统已经主动将php设置参数写入到这个文件中了，而这个文件会在apache重新启动时被读入。
+/etc/php.ini:这是PHP的主要配置文件，包括PHP能不能允许用户上传文件，能不能允许某些低安全性的标志等，都在这个配置文件中设置。
+/etc/php.d/mysql.ini /usr/lib/php4/mysql.so:PHP能否可以支持MySQL接口就看这两个文件了。这两个文件是由php-mysql软件提供的
+/usr/bin/phpize /usr/include/php:如果您以后想要安装类似PHP加速器可以让浏览速度加快的话，那么这个文件与目录就需要存在，否则加速器软件没法用。
+
+httpd.conf的基本设置
+首先，你需要在/etc/hosts内需要有个一个完整的主机名，否则在重启apache服务时，会提示找不到完整的主机名。
+httpd.conf的基本设置是这样的:
+<设置项目>
+次设置项目内的相关参数
+。。。。
+
+例如，你想要针对首页/var/www/html提供额外的功能，那么可以进行如下设置：
+
+Options Indexes
+
+
+php -i | grep -i 'mysql support' 
+
+
+
+
+

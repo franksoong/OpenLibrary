@@ -1,0 +1,45 @@
+add/delete/update/change usr/group
+
+# useradd -G {group-name} username
+# grep developers /etc/group
+# useradd -G developers vivek
+# passwd vivek
+# id vivek
+# useradd -G admins,ftp,www,developers jerry
+# usermod -a -G ftp tony
+# usermod -g www tony
+# userdel
+
+
+mysql
+adm
+apache
+
+
+
+# restart http
+/etc/init.d/httpd restart 
+
+
+# git operation
+git pull git@github.com:user/repository.git
+git push git@github.com:user/repository
+git clone git@github.com:user/repository
+git fetch upstream
+git init
+git add -A
+git add .
+git add -u
+git commit -m 'first commit'
+git remote add origin git@github.com:username/Hello-World
+git push -u origin master
+
+git clone git@github.com:username/Spoon-Knife.git
+git remote add upstream git://github.com/octocat/Spoon-Knife.git
+git fetch upstream
+git push origin master
+git fetch upstream
+git merge upstream/master
+
+# ssh key
+ssh-keygen -t rsa -C "soong@shi6w380.net.plm.eds.com"
